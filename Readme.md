@@ -110,6 +110,29 @@ while ((node = list_iterator_next(it))) {
 list_iterator_destroy(it);
 ```
 
+## add struct exapples
+```c
+//managed list
+typedef struct {
+  list_node_t *head;
+  list_node_t *tail;
+  unsigned int len;
+  void (*free)(void *val); -->can free yourself provide function
+  int (*match)(void *a, void *b); --> find node ,by yourself provide match
+} list_t;
+
+//find list
+typedef struct {
+  list_node_t *next;
+  list_direction_t direction;
+} list_iterator_t;
+
+
+//该list实现两种操作方式:
+1. 特殊链表: pop /stack
+2. list:头插和尾插,find查询相关消息,然后remove删除消息
+```
+
 ## Examples
 
 list iteration:
